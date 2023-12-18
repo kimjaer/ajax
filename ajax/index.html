@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI="
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 </head>
+
 <body>
-  <button>come on</button>
+    <button data-info=".com">가져와</button>
+    <button data-info=".history">가져와</button>
+    <button data-info=".board">가져와</button>
+
   <div id="loadcon">
-    yogiro
+    여기
   </div>
+
   <script>
-    $("button").click(()=>{
-      $("#loadcon").load("/ajax/data/data.html .com")
+    $("button").click(function() {
+      $("#loadcon").load("/ajax/data/data.html "+ $(this).data("info"))
+      console.log($(this).data("info"))
     })
   </script>
 </body>
+
 </html>
