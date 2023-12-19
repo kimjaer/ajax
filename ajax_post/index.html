@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX & PHP Example</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <h1>서버에 자바스크립트가 데이터를 요청해서 출력까지 하는 것 ajax</h1>
+    <p>준비물 : jquery, 일부러 서버에서 구동하는 php, html(데이터전송하기 위해서 form태그) </p>
+    <form id="myForm">
+        <div>
+            <label for="named">이름 :</label>
+            <input type="text" id="named" name="named">
+        </div>
+        <div>
+            <label for="subject">학번 :</label>
+            <input type="text" id="subject" name="subject" >
+        </div>
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+    <div id="result"></div>
+</body>
+
+</html>
