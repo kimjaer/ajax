@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX & PHP Example</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js"
+        integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <style>
+        fieldset {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 접속주소 : http://ohao.dothome.co.kr/ajax-submit/index.html -->
+    <h1>서버에 자바스크립트가 데이터를 요청해서 출력까지 하는 것 ajax</h1>
+    <p>준비물 : jquery, 일부러 서버에서 구동하는 php, html(데이터전송하기 위해서 form태그) </p>
+    <fieldset>
+        <legend>설문조사</legend>
+        <form id="myForm">
+            <!-- label-for랑 input-id 랑 맞추기 -->
+            <div>
+                <label for="named">이름 :</label>
+                <input type="text" id="named" name="named">
+            </div>
+            <div>
+                <label for="age">나이 :</label>
+                <input type="number" id="age" name="age">
+            </div>
+            <div>
+                <span>성별 :</span>
+                <label for="man">남</label>
+                <input type="radio" id="man" name="gender" value="man" checked>
+                
+                <label for="woman">여</label>
+                <input type="radio" id="woman" name="gender" value="woman">            
+            </div>
+            <div>
+                <label for="yourcolor">선호색상 :</label>
+                    <input type="color" name="yourcolor">            
+            </div>
+    
+            <button type="button" onclick="submitForm()">제출하기</button>
+        </form>
+    </fieldset>
+    <!-- <form id="myForm">
+        <label for="data">데이터 넣고 전송하면 ajax가 서버한테 가서 뭘 처리해서 줌:</label>
+        <input type="text" id="data" name="data" placeholder="성포함 이름입력">
+        <input type="" id="data" name="data" placeholder="010-0000-0000">
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form> -->
+    <div id="result"></div>
+</body>
+
+</html>
