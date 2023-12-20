@@ -4,30 +4,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>주기적인 작업</title>
+  <title>주기적인 작업 </title>
 </head>
 
 <body>
+  <div id="num">100</div>
 
-  <div id="num">0</div>
+  <button id="stopbtn">stop</button>
+  <button id="removebtn">-</button>
+  <button id="addbtn" onclick="numget(true)">+</button>
 
   <script>
-    let getnum = 0;
-    const numget = () => {
-      getnum++;
-      document.getElementById("num").innerHTML = getnum;
+    /* 
+       개발시나리오 
+       화면 열리면 하나씩 1초마다 증가한다.
+       stopbtn을 클릭하면 정지된다. 그리고 stop이 play로 출력된다. innerHTML임
+       addbtn을 클릭하면 하나씩 증가 (자동롤링이되고 있었다면 멈추고 하나씩 증가)
+       removebtn을 클릭하면 하나씩 감소 (자동롤링이되고 있었다면 멈추고 하나씩 감소)
+    
+    */
 
-      if (getnum === 10) {
-        getnum = 0;
+    let getnum = document.getElementById("num").innerHTML;
+
+    const addBtn = document.getElementById("addbtn");
+    const removeBtn = document.getElementById("remvebtn");
+    const stopBtn = document.getElementById("stop");
+
+    // addBtn.addEventListener('click', () => { numget(true) })
+    if (removeBtn) {
+      removeBtn.addEventListener('click', () => { numget(false) })
+    }
+    // numget실행하기전에 반드시 toggle 값을 선정해야한다.
+    const numget = (toggle) => {
+      if (toggle) {
+        getnum++;
+      } else {
+        getnum--;
       }
+      document.getElementById("num").innerHTML = getnum;
     }
 
-    const intervalId = setInterval(numget, 1000);
-    //intervalId 라는 상수에 setInterval이 하는 행위를 저장함.
-    //이유는? setInterval로 무언가를 반복실행시켰으므로 그를 컨트롤하기위해.
+    const intervalId = setInterval(function () { numget(true) }, 1000);
+
   </script>
-
-
 </body>
 
 </html>
