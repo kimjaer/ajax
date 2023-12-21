@@ -4,49 +4,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>주기적인 작업 </title>
+  <title>주기적인 작업</title>
 </head>
 
 <body>
   <div id="num">100</div>
-
   <button id="stopbtn">stop</button>
-  <button id="removebtn">-</button>
+  <button id="removebtn" onclick="numget(false)">-</button>
   <button id="addbtn" onclick="numget(true)">+</button>
 
   <script>
-    /* 
-       개발시나리오 
-       화면 열리면 하나씩 1초마다 증가한다.
-       stopbtn을 클릭하면 정지된다. 그리고 stop이 play로 출력된다. innerHTML임
-       addbtn을 클릭하면 하나씩 증가 (자동롤링이되고 있었다면 멈추고 하나씩 증가)
-       removebtn을 클릭하면 하나씩 감소 (자동롤링이되고 있었다면 멈추고 하나씩 감소)
-    
-    */
+    //numget을 실행하기전에 반드시 numget의 값을 선정해주어야 한다.
+    let getnum = parseInt(document.getElementById("num").innerHTML);
+    let toogle = true;
+    let toggleb = true;
 
-    let getnum = document.getElementById("num").innerHTML;
+    document.getElementById("stopbtn").addEventListener("click", () => {
+      toggleInterval(toggleb);
+      toggleb = !toggleb;
+    })
 
-    const addBtn = document.getElementById("addbtn");
-    const removeBtn = document.getElementById("remvebtn");
-    const stopBtn = document.getElementById("stop");
-
-    // addBtn.addEventListener('click', () => { numget(true) })
-    if (removeBtn) {
-      removeBtn.addEventListener('click', () => { numget(false) })
-    }
-    // numget실행하기전에 반드시 toggle 값을 선정해야한다.
-    const numget = (toggle) => {
-      if (toggle) {
+    function numget(toogles) {
+      if (toogles) {
         getnum++;
       } else {
         getnum--;
       }
+
+      if (getnum == -1) {
+        getnum = 0;
+      }
       document.getElementById("num").innerHTML = getnum;
+    };
+
+    function toggleInterval(se) {
+      if (se) {
+        clearInterval(intervalId);
+        document.getElementById("stopbtn").innerHTML = 'play';
+      }
+      //stop버튼 누르면 stop버튼 안의 단어가 play 로 바뀜
+      else {
+        intervalId = setInterval(function () { numget(toogle) }, 1000);
+        document.getElementById("stopbtn").innerHTML = 'stop';
+      }
     }
 
-    const intervalId = setInterval(function () { numget(true) }, 1000);
+
+    let intervalId = setInterval(function () { numget(toogle) }, 1000); //수정사항 : intervalID가 기존에 const로 설정되어있어서 위에 if/else식에서 intervalID를 새로 가져오지 못함.
+    //intervalId 라는 상수에 setInterval이 하는 행위를 저장함.
+    //이유는? setInterval로 무언가를 반복실행시켰으므로 그를 컨트롤하기위해.
 
   </script>
+
 </body>
 
 </html>
