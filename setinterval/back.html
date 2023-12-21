@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주기적인 처리 window 시간차마다 처리하기</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #banner {
+      height: 0;
+      padding-top: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+
+<body>
+  <p>나는 첫 화면 관계없다.(style/tag)</p>
+  <div id="banner" class="banner red cc bbb" style="background-image: url(img/banner_1.jpg);"></div>
+  <script>
+
+    let count = 0;
+
+    const autocolor = () => {
+      count++;
+      count %= 6;
+      document.querySelector("#banner").style.backgroundImage = `url(img/banner_${count}.jpg)`;
+    }
+
+    setInterval(function () { autocolor(); }, 1000)
+
+  </script>
+</body>
+
+</html>
