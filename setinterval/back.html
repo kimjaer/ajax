@@ -19,11 +19,27 @@
       background-size: cover;
       transition: 0.5s;
     }
+
+    .banner .btns {
+      text-align: center;
+      padding: 0.1rem;
+    }
+
+    .banner .btns span.act {
+      color: red;
+    }
+
+    /* span태그에 act 된 애 글자 빨간색 할 거다 /setinterval 안에 들어감 */
   </style>
 </head>
 
 <body>
-  <div id="banner" class="banner red cc bbb " style="background-image: url(img/banner_1.jpg);"></div>
+
+  <section>
+    <div id="banner" class="banner red cc bbb " style="background-image: url(img/banner_0.jpg);">
+    <div class="btns"></div></div>
+  </section>
+
   <script>
     //    웹기능사 문제
     //1.  3초마다 서서히 나타났다 사라지는 배너효과를 구현
@@ -31,12 +47,31 @@
     //3.  3초마다 위아래로 슬라이드 하면서 움직이는 효과
 
     let count = 0;
-    const autocolor = () => {
+    const contentnum = 6;
+
+    //버튼 만들기
+    let btntag = ""; //버튼 출력 및 첫번째 버튼 클래스 활성화
+    for (i = 0; i < contentnum; i++) { 
+      btntag += "<span>" + i + "</span>"
+    }
+    document.querySelector(".banner .btns").innerHTML = btntag;
+
+
+    const autocolor = () => { //1초 뒤부터 주기적으로 1초 실행
       count++;
-      count %= 6;
+      count %= contentnum;
       document.querySelector("#banner").style.backgroundImage = `url(img/banner_${count}.jpg)`;
+      document.querySelectorAll(".banner .btns span").forEach((el, idx) => { //주기적으로 실행할 함수, 버튼 활성화시키는 명령
+        if (count === idx) {
+          el.classList = "act"
+        } else {
+          el.classList = "";
+        }
+      })
     }
     setInterval(function () { autocolor(); }, 1000)
+
+
   </script>
 </body>
 
