@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>주기적인 처리 window 시간차마다 처리하기</title>
+  <title>주기적인 처리 / window 시간차마다 실행하기</title>
   <style>
     body {
       margin: 0;
@@ -17,25 +17,26 @@
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
+      transition: 0.5s;
     }
   </style>
 </head>
 
 <body>
-  <p>나는 첫 화면 관계없다.(style/tag)</p>
-  <div id="banner" class="banner red cc bbb" style="background-image: url(img/banner_1.jpg);"></div>
+  <div id="banner" class="banner red cc bbb " style="background-image: url(img/banner_1.jpg);"></div>
   <script>
+    //    웹기능사 문제
+    //1.  3초마다 서서히 나타났다 사라지는 배너효과를 구현
+    //2.  3초마다 좌우로 슬라이드하면서 움직이는 효과
+    //3.  3초마다 위아래로 슬라이드 하면서 움직이는 효과
 
     let count = 0;
-
     const autocolor = () => {
       count++;
       count %= 6;
       document.querySelector("#banner").style.backgroundImage = `url(img/banner_${count}.jpg)`;
     }
-
     setInterval(function () { autocolor(); }, 1000)
-
   </script>
 </body>
 
