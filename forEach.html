@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  <h1></h1>
   <ul id="gnb">
     <li></li>
     <li></li>
@@ -19,8 +20,9 @@
   <script>
     const naviinfo = ["네이버", "다음", "구글", "아마존", "쿠팡"];
     const h1data = "자바스크립트로 데이터 넣기 "
+    // h1data = `네비 어레이의 데이터가 ${naviinfo.length}개 있습니다.`
 
-    document.querySelector('h1').innerHTML = h1data;
+
     let litags = "";
     // document.querySelectorAll('ul li').forEach((el, idx) => {
     //   el.innerHTML = idx
@@ -36,12 +38,18 @@
     //   litags += "<li>" + el + "</li>"
     // })
     naviinfo.map((el, idx) => {
-      if (el !== "아마존") {
-        litags += `<li>${el}</li>`;
-      }
-      console.log(el, idx)
+    //   if (el !== "아마존") {
+    //     litags += `<li>${el}</li>`;
+    //   }
+    if (idx != 3) litags += "<li>" + el + "</li>"
     });
     
+
+    document.querySelector('ul').innerHTML = litags
+    const lis = document.querySelector('ul li').length
+
+    document.querySelector('h1').innerHTML = lis > 0 ? lis + "건이 검색되었습니다." : null;
+
     document.querySelector("#gnb").innerHTML = litags
   </script>
 </body>
