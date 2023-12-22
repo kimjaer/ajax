@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>주기적인 처리 window 시간차마다 처리하기</title>
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+    }
+
+    .red {
+      background-color: pink;
+    }
+    .yellow{
+      background-color: rgb(255, 218, 96);
+    }
+    .blue{
+      background-color: rgb(100, 100, 248);
+    }
+    #banner {
+      height: 0;
+      padding-top: 50%;
+    }
+  </style>
+</head>
+<body>
+  <p>나는 첫 화면 관계없다.(style/tag)</p>
+  <div id="banner"></div>
+  <script>
+
+    const colorarr = ['red','yellow','blue'];
+    let count = 0
+    // 문자정보는 사라져야 함 → 변수 만들기
+    // document.querySelector("#banner").classList.add("blue")
+
+    
+    setInterval(function(){autocolor();},1000) 
+    // setInterval(autocolor, 1000) 이거 써도 실행됨.
+    // setInterval(함수,1000) 이여야하는데 ,
+    // etInterval({autocolor(),1000) 이렇게 하면 실행식이라 에러터짐! 함수만 들어가야함
+
+    function autocolor(){
+      count++;
+      count %= 3;
+      document.querySelector("#banner").classList = 'banner ' + colorarr[count];
+    }
+    
+
+  </script>
+</body>
+</html>

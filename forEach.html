@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>forEach 태그준비</title>
+</head>
+
+<body>
+  <ul id="gnb">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <script>
+    const naviinfo = ["네이버", "다음", "구글", "아마존", "쿠팡"];
+    const h1data = "자바스크립트로 데이터 넣기 "
+
+    document.querySelector('h1').innerHTML = h1data;
+    let litags = "";
+    // document.querySelectorAll('ul li').forEach((el, idx) => {
+    //   el.innerHTML = idx
+    // })
+    // document.querySelectorAll('ul li')[0].innerHTML = 0
+    // for (i = 0; i < 5; i++) {
+    //   document.querySelectorAll('ul li')[i].innerHTML = 1
+    // }
+    // for(x in naivinfo){ // for in문은 ovject도 상대함
+    //   litags += "<li>" + naivinfo[x] + "</li>"
+    // }
+    // naivinfo.map((el, idx) => {
+    //   litags += "<li>" + el + "</li>"
+    // })
+    naviinfo.map((el, idx) => {
+      if (el !== "아마존") {
+        litags += `<li>${el}</li>`;
+      }
+      console.log(el, idx)
+    });
+    
+    document.querySelector("#gnb").innerHTML = litags
+  </script>
+</body>
+
+</html>
