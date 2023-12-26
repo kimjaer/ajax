@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다중처리</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #btn,
+    #btn2 {
+      display: flex;
+      justify-content: center;
+      padding: 3rem;
+    }
+
+    #btn span {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid #333;
+    }
+
+    #btn2 span {
+      display: inline-block;
+      padding: 5px 10px;
+      border: 1px solid #ff0000;
+    }
+  </style>
+  <script>
+    window.onload = () => { // onload는 한번만 쓰면되니까 화살표 함수로 하는게 낫다.
+
+      // document.getElementById : 진짜 태그로 받음.
+      // document.querySelector : 데이터로 받아서 더 관리하기 쉬움 ! 이걸 쓰는걸 추천함! 
+
+
+      function spanMaker(selecttag, num) {
+        let spantag = ""; // 재사용가능하게 함수안에서 선언해서 초기화하기
+        const btntag = document.querySelector(selecttag)
+        for (let i = 0; i < num; i++) {
+          spantag += `<span>${i + 1}</span>`
+        }
+        btntag.innerHTML = spantag;
+      }
+
+      spanMaker("#btn", 5);
+      spanMaker("#btn2", 3);
+    }
+
+    // 매개인자를 사용해 최적화함
+  </script>
+</head>
+
+<body>
+  <div id="btn"></div>
+  <div id="btn2"></div>
+</body>
+
+</html>
