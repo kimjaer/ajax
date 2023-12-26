@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">click !</button>
+  <script>
+    document.querySelector("#btn").addEventListener("click", ()=> { 
+      alert("새해복 많이 받으세요~!")
+    })//addEventListener 전 까지는 실행식이였지만, 이후부터는 선언식임
+  </script>
+  <!-- <body>
+    <button onclick="clickbutton()">click !</button>
+  
+    <script>
+      const clickbutton = () => {
+        alert("새해복 많이 받으세요~!")
+      }
+    </script>
+  </body> -->
+</body>
+</html>
